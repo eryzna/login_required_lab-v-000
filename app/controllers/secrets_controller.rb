@@ -7,7 +7,7 @@ class SecretsController < ApplicationController
 
   private
 
-  def require_login
-    return head(:forbidden) unless session.include? :user_id
+  def require_logged_in
+    redirect_to controller: 'sessions', action: 'new' unless current_user
   end
 end
